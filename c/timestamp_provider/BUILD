@@ -5,4 +5,5 @@ cc_binary(
     deps = [
         "//c/timestamp_provider/timestamp_provider_lib:timestamp_provider_lib",
     ],
+    visibility = ["//visibility:public"], 
 )
