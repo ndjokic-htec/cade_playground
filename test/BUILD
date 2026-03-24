@@ -1,5 +1,4 @@
 load("@rules_python//python:defs.bzl", "py_test")
-load("@my_pip_deps//:requirements.bzl", "requirement")
 
 py_test(
     name = "test_dummy_logger",
@@ -8,6 +7,11 @@ py_test(
     ],
     deps = [
        "//python:dummy_logger",
+       "//python/random_print_library:random_print_library",
+    ],
+    data = [
+        "//c/timestamp_provider:timestamp_provider",
     ],
     visibility = ["//visibility:public"],
 )
+

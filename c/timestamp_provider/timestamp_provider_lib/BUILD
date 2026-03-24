@@ -1,3 +1,4 @@
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library")
 cc_library(
     name = "timestamp_provider_lib",
     srcs = ["timestamp_provider.c"],
