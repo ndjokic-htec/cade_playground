@@ -9,7 +9,6 @@ permissions:
   packages: write
 
 jobs:
-
   build_ci_image:
     runs-on: self-hosted
 
@@ -30,6 +29,7 @@ jobs:
 
   run_tests:
     needs: build_ci_image
+    name: PR Tests
     runs-on: self-hosted
 
     container:
