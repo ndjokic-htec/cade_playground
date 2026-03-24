@@ -29,7 +29,6 @@ jobs:
 
   run_tests:
     needs: build_ci_image
-    name: PR Tests
     runs-on: self-hosted
 
     container:
