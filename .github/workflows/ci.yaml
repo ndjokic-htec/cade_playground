@@ -11,7 +11,7 @@ permissions:
 jobs:
 
   build_ci_image:
-    runs-on: self-hosted
+    runs-on: ubuntu/latest
 
     steps:
       - name: Checkout repository
@@ -30,7 +30,7 @@ jobs:
 
   run_tests:
     needs: build_ci_image
-    runs-on: self-hosted
+    runs-on: ubuntu/latest
 
     container:
       image: ghcr.io/${{ github.repository }}/bazel-ci:${{ github.sha }}
