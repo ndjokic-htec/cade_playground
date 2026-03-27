@@ -24,4 +24,24 @@ jobs:
 
       - name: Build CI Docker image
         run: |
-          echo "Test"
+          IMAGE=ghcr.io/${{ github.repository }}/bazel-ci:${{ github.sha }}
+          docker build -f Dockerfile.ci -t $IMAGE .
+          docker push $IMAGE
+
+  run_tests:
+    needs: build_ci_image
+    runs-on: ubuntu-latest
+
+    container:
+      image: ghcr.io/${{ github.repository }}/bazel-ci:${{ github.sha }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Bazel tests
+        run: |
+          bazel test //test:test_dummy_logger
