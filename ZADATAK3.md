@@ -103,3 +103,12 @@ argo version
 ```
 
 ### You can now access argo workflows at https://127.0.0.1:2746/workflows/argo
+#### Note that your browser might not allow you to connect because of unsigned certificate. Select to ignore the error and continue.
+
+### To restart services after restarting/reconnecting WSL run
+```
+minikube start
+kubectl rollout restart deployment -n argocd
+kubectl port-forward svc/argocd-server -n argocd 8080:443 &
+kubectl -n argo port-forward service/argo-server 2746:2746 &
+```
