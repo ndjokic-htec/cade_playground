@@ -25,7 +25,7 @@ jobs:
       - name: Build CI Docker image
         run: |
           IMAGE=ghcr.io/${{ github.repository }}/bazel-ci:${{ github.sha }}
-          docker build -f Dockerfile.ci -t $IMAGE .
+          docker build -f docker/Dockerfile.ci -t $IMAGE .
           docker push $IMAGE
 
   run_tests:
